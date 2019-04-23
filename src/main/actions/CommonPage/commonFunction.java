@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.openqa.selenium.Alert;
@@ -25,12 +26,19 @@ public class commonFunction extends BasicPage {
 		super(driver);
 	}
 
-	private long timeouts;
+//	private long timeouts;
 
-	// private int timeouts = 20;
+	private int timeouts = 60;
 
 	public void openUrl(String url) {
 		driver.get(url);
+	}
+
+	public void clickRandomCombobox(String locator) {
+		List<WebElement> selects = driver.findElements(By.xpath(locator));
+		Random rand = new Random();
+		int list = rand.nextInt(selects.size());
+		selects.get(list).click();
 	}
 
 	public String getTitle(WebDriver driver) {
@@ -84,6 +92,11 @@ public class commonFunction extends BasicPage {
 	public void input(String locator, String value) {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.sendKeys(value);
+	}
+
+	public boolean checkElementDisplayed(String locator) {
+		Boolean isPresent = driver.findElements(By.xpath(locator)).size() > 0;
+		return isPresent;
 	}
 
 //	Excercise2:
