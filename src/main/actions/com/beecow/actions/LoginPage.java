@@ -10,21 +10,32 @@ import CommonPage.commonFunction;
 
 public class LoginPage extends commonFunction {
 
-	public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
 		super(driver);
 	}
-
+    public void clearByJs(String value)
+	{
+		executeScriptBrowser(value);
+	}
 	public LoginPage clickdangnhap() {
 		waitVisible(HomePageUI.DANGNHAP_TXT);
 		click(HomePageUI.DANGNHAP_TXT);
 		return PageFactory.initElements(driver, LoginPage.class);
 	}
 
-	public void clearEmailorSdt(String value) {
+//	private  void ctrlAEmail() {
+//		waitVisible(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT);
+//		(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT).sendKey(Keys.CONTROL + "a");
+//		
+//	}
+
+
+	public void clearEmailorSdt() {
 		waitVisible(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT);
-		clearEmailorSdt(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT);
+		clear(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT);
 
 	}
+	
 
 	public void inputEmailorSdt(String value) {
 		waitVisible(LoginPageUI.MOBILEOREMAIL_DANGNHAP_TXT);
@@ -32,9 +43,9 @@ public class LoginPage extends commonFunction {
 
 	}
 
-	public void clearMatkhau(String value) {
+	public void clearMatkhau() {
 		waitVisible(LoginPageUI.MATKHAU_DANGNHAP_TXT);
-		clearMatkhau(LoginPageUI.MATKHAU_DANGNHAP_TXT);
+		clear(LoginPageUI.MATKHAU_DANGNHAP_TXT);
 	}
 
 	public void iputMatkhau(String value) {
@@ -53,5 +64,10 @@ public class LoginPage extends commonFunction {
 		waitVisibleDynamicElement(LoginPageUI.DYNAMIC_MSG, value);
 		return getTextDynamicElement(LoginPageUI.DYNAMIC_MSG, value);
 	}
+	public String getTextUserName(){
+		waitVisible(LoginPageUI.USERNAME_LBL);
+		return getText(LoginPageUI.USERNAME_LBL);
+	}
+
 
 }

@@ -59,7 +59,7 @@ public class Commontestcase {
 //		return result;
 //	}
 
-	public String randomEmail() {
+	public String randomName() {
 		Random rand = new Random();
 		int n = rand.nextInt(9999999);
 		return String.valueOf(n);

@@ -24,5 +24,6 @@ public class HomePage extends commonFunction {
 		clickByJs(HomePageUI.SELLER_LINK);
 		return PageFactory.initElements(driver, CreateProductPage.class);
 	}
+	
 
 }
